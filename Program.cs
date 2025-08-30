@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Ucu.Poo.Persons;
 
@@ -57,6 +58,26 @@ public class IdUtils
     }
 }
 
+//Creacion de la clase Person
+public class Person
+{
+    //ATRIBUTOS
+    private string name;
+    private string ci;
+    
+    //METODOS
+    public Person(string name, string ci)
+    {
+        this.name = name;
+        this.ci = ci;
+    }
+
+    public bool Verificador()
+    {
+        return (IdUtils.IdIsValid(this.ci) && this.name != "");
+    }
+    
+}
 public static class Program
 {
     /// <summary>
@@ -73,7 +94,18 @@ public static class Program
     {
         Person john = new Person("John Doe", "1.234.567-2");
         Person jane = new Person("Jane Doe", "8.765.432-7");
-        john.IntroduceYourself();
-        jane.IntroduceYourself();
+       // john.IntroduceYourself();
+        //jane.IntroduceYourself();
+        if (jane.Verificador() == true)
+        {
+            Console.WriteLine("Persona valida");
+        }
+        else { Console.WriteLine("Ingrese una persona valida");}
+    
+        if (john.Verificador() == true)
+        {
+            Console.WriteLine("Persona valida");
+        }
+        else { Console.WriteLine("Ingrese una persona valida");}
     }
 }
